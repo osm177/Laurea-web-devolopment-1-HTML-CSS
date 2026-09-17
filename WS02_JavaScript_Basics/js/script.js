@@ -49,5 +49,5 @@ if (lempiUrheilusi === "Jalkapalo") {
     console.log("Kivaa! Sinun lempiurheilusi on " + lempiUrheilusi + " .");
 }
 
-// const visitorFavoriteAnimal = prompt("What is your favorite animal?");
+
 
