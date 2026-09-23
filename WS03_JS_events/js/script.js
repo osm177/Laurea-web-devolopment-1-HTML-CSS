@@ -43,6 +43,8 @@ const feedback = document.querySelector("#feedback");
 const status = document.querySelector("#status");
 const charcount = document.querySelector("#charcount");
 const preview = document.querySelector("#preview");
+const feedbackForm = document.querySelector("#feedbackForm");
+
 
 feedback.addEventListener("focus", function() {
     status.innerHTML = "Kirjoita palautteesi";
@@ -56,3 +58,15 @@ feedback.addEventListener("input", function() {
     charcount.innerHTML = feedback.value.length + "/200";
     preview.innerHTML = feedback.value
 });
+
+feedbackForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const length = feedback.value.length;
+    if (length < 10 || length > 200) {
+        status.innerHTML = "Paluatteen pitää olla 10-200 merkkiä.";
+    } else { 
+        feedback.value = " ";
+        status.innerHTML = "Thank you for your feedback!";
+    }
+});
+
