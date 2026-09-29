@@ -68,6 +68,7 @@ showAnimalButton.addEventListener("click", function (){
 
 
 // listener for the select element from the drop down list.
+
 const animalSelect = document.querySelector("#animalSelect");
 const animalName = document.querySelector("#animalName");
 const selectedAnimalImage = document.querySelector("#animalImage");
@@ -109,3 +110,37 @@ animalSelect.addEventListener("change", function () {
      });
 
     // function to update the DOM based on the selected animal
+
+    const animalForm = document.querySelector("#animalForm");
+    const observationTableBody = document.querySelector("#observationTableBody");
+
+    animalForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const observationAnimal = document.querySelector("#observationAnimal").value;
+        const observationLocation = document.querySelector("#observationLocation").value;
+        const observationDate = document.querySelector("#observationDate").value;
+
+        console.log(observationAnimal, observationLocation, observationDate);
+
+        if (observationAnimal === "" || observationLocation === "" || observationDate === "") {
+            alert("Täytä kaikki kentät!");
+            return;
+        }
+
+        const newRow = document.createElement("tr");
+        const animalCell = document.createElement("td");
+        animalCell.textContent = observationAnimal;
+
+        const locationCell = document.createElement("td");
+        locationCell.textContent = observationLocation;
+
+        const dateCell = document.createElement("td");
+        dateCell.textContent = observationDate;
+        newRow.append(animalCell, locationCell, dateCell);
+        observationTableBody.append(newRow);
+
+        animalForm.reset();
+
+
+    });
